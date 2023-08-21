@@ -19,7 +19,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::group(['prefix' => 'user'], function() {
         Route::get('/leaderboard'      , 'UserController@getLeaderboard');
-        Route::get('/{id}'              , 'UserController@getById');
+        Route::get('/'                 , 'UserController@getUser');
+        Route::get('/{id}'             , 'UserController@getById');
         Route::post('/result/{id}'     , 'UserController@addTestResult');
     });
 

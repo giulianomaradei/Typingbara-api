@@ -11,6 +11,11 @@ use App\Repositories\User\Interfaces\UserInterface as UserRepository;
 
 class UserController extends Controller
 {
+    public function getUser( UserRepository $repo, UserService $user, Request $request )
+    {
+        return $repo->parseResult( $user->getUser($request) );
+    }
+
     public function getById( $id, UserRepository $repo, UserService $user )
     {
         return $repo->parseResult( $user->getById( $id ) );
