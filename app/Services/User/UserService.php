@@ -25,7 +25,25 @@ class UserService extends BaseService implements UserInterface
 
     public function getUser(Request $request)
     {
-        return $request->user();
+        $user = $request->user()->load(['typingTestResults']);
+
+        $typingTestResults = $user->typingTestResults;
+
+        $maxWpm = $typingTestResults->max('wpm');
+        $averageWpm = $typingTestResults->avg('wpm');
+        $averageAccuracy = $typingTestResults->avg('accuracy');
+        $numberOfTests = $typingTestResults->count();
+
+        $analytics = [
+            'max_wpm' => $maxWpm,
+            'average_wpm' => $averageWpm,
+            'average_accuracy' => $averageAccuracy,
+            'number_of_tests' => $numberOfTests,
+        ];
+
+        $user->analytics = $analytics;
+
+        return $user;
     }
 
     public function getById($id)
