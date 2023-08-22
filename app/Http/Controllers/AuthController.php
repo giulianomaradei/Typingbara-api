@@ -22,9 +22,10 @@ class AuthController extends Controller
             //Validated
             $validateUser = Validator::make($request->all(),
             [
-                'name' => 'required',
+                'name' => 'required|unique:users,name',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required'
+                'password' => 'required',
+                'confirm_password' => 'required|same:password'
             ]);
 
             if($validateUser->fails()){

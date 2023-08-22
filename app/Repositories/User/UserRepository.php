@@ -27,15 +27,16 @@ class UserRepository extends BaseRepository implements UserInterface
     public function getLeaderboard()
     {
         return $this->model->select('users.name', \DB::raw('MAX(best_results.wpm) as record'))
-        ->leftJoinSub(function ($query) {
-            $query->from('typing_test_results')
-                ->select('user_id', \DB::raw('MAX(wpm) as wpm'))
-                ->groupBy('user_id');
-        }, 'best_results', 'users.id', '=', 'best_results.user_id')
-        ->groupBy('users.name')
-        ->orderBy('record', 'desc')
-        ->take(10)
-        ->get();
+            ->leftJoinSub(function ($query) {
+                $query->from('typing_test_results')
+                    ->select('user_id', \DB::raw('MAX(wpm) as wpm'))
+                    ->groupBy('user_id');
+            }, 'best_results', 'users.id', '=', 'best_results.user_id')
+            ->groupBy('users.name')
+            ->havingRaw('record > 0') // Adiciona essa cláusula para filtrar WPM maior que 0
+            ->orderBy('record', 'desc')
+            ->take(10)
+            ->get();
     }
 
     public function addTestResult( $id, $data )
