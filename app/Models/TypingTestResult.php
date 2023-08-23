@@ -8,14 +8,14 @@ class TypingTestResult extends Model
 {
     protected $fillable = [
         'user_id',
-        'wpm',
+        'words_per_minute',
         'accuracy',
         'duration_seconds',
     ];
 
     public static $rules = [
         'user_id' => 'required|integer',
-        'wpm' => 'required|numeric',
+        'words_per_minute' => 'required|numeric',
         'accuracy' => 'required|numeric',
         'duration_seconds' => 'required|integer',
     ];

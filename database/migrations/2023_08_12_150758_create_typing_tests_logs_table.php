@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->integer('wpm');
+            $table->integer('words_per_minute');
             $table->integer('accuracy');
             $table->integer('duration_seconds');
             $table->timestamps();

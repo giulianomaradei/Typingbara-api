@@ -25,14 +25,17 @@ class UserService extends BaseService implements UserInterface
 
     public function getUser(Request $request)
     {
+        dd($this->userRepository->getLeaderboardPosition($request->user()->id));
         $user = $request->user()->load(['typingTestResults']);
 
         $typingTestResults = $user->typingTestResults;
 
-        $maxWpm = $typingTestResults->max('wpm');
-        $averageWpm = $typingTestResults->avg('wpm');
+        $maxWpm = $typingTestResults->max('words_per_minute');
+        $averageWpm = $typingTestResults->avg('words_per_minute');
         $averageAccuracy = $typingTestResults->avg('accuracy');
         $numberOfTests = $typingTestResults->count();
+
+        $this->userRepository->getLeaderboard();
 
         $analytics = [
             'max_wpm' => $maxWpm,
