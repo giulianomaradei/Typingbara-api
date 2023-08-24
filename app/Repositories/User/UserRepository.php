@@ -39,9 +39,14 @@ class UserRepository extends BaseRepository implements UserInterface
             ->get();
     }
 
-    public function getLeaderboardPosition( $id ){
-        $user = $this->model->where('user_id', $id)->max('words_per_minute');
-        return $user;
+    public function getLeaderboardPosition($id) {
+        $user = $this->model->find($id);
+        $maxWordsPerMinute = $user->typingTestResults->max('words_per_minute');
+        $position = $this->model->whereHas('typingTestResults', function ($query) use ($maxWordsPerMinute) {
+            $query->where('words_per_minute', '>', $maxWordsPerMinute);
+        })->count() + 1;
+
+        return $position;
     }
 
     public function addTestResult( $id, $data )

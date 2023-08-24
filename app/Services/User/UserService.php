@@ -30,17 +30,18 @@ class UserService extends BaseService implements UserInterface
         $typingTestResults = $user->typingTestResults;
 
         $maxWpm = $typingTestResults->max('words_per_minute');
-        $averageWpm = $typingTestResults->avg('words_per_minute');
-        $averageAccuracy = $typingTestResults->avg('accuracy');
+        $averageWpm = floor($typingTestResults->avg('words_per_minute'));
+        $averageAccuracy = floor($typingTestResults->avg('accuracy'));
         $numberOfTests = $typingTestResults->count();
 
-        $this->userRepository->getLeaderboard();
+        $leaderboardPosition = $this->userRepository->getLeaderboardPosition($user->id);
 
         $analytics = [
-            'max_wpm' => $maxWpm,
-            'average_wpm' => $averageWpm,
+            'max_wpm'          => $maxWpm,
+            'average_wpm'      => $averageWpm,
             'average_accuracy' => $averageAccuracy,
-            'number_of_tests' => $numberOfTests,
+            'number_of_tests'  => $numberOfTests,
+            'position'         => $leaderboardPosition
         ];
 
         $user->analytics = $analytics;
