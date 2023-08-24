@@ -25,7 +25,6 @@ class UserService extends BaseService implements UserInterface
 
     public function getUser(Request $request)
     {
-        dd($this->userRepository->getLeaderboardPosition($request->user()->id));
         $user = $request->user()->load(['typingTestResults']);
 
         $typingTestResults = $user->typingTestResults;
