@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::group(['prefix' => 'user'], function() {
+    Route::get('/leaderboard'      , 'UserController@getLeaderboard');
+});
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::group(['prefix' => 'user'], function() {
-        Route::get('/leaderboard'      , 'UserController@getLeaderboard');
         Route::get('/'                 , 'UserController@getUser');
         Route::get('/{id}'             , 'UserController@getById');
         Route::post('/result/{id}'     , 'UserController@addTestResult');
@@ -30,3 +32,5 @@ Route::group(['prefix' => 'auth'], function() {
     Route::post('/login', 'AuthController@login');
     Route::post('/register', 'AuthController@register');
 });
+
+

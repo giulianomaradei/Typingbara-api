@@ -17,3 +17,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+.terraform.lock.hcl
+main.terraform
+terraform.tfstate
+terraform.tfstate.backup
+main.tf
+.terraform/providers/registry.terraform.io/hashicorp/aws/5.14.0/linux_amd64/terraform-provider-aws_v5.14.0_x5
