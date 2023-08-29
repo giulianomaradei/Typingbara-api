@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'typingbara'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B937A92A6CBD4DB38E83A7FE10F8377E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_010C6ECAC46647BEB25DCDE92539226E }}
           package: .
