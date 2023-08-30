@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://local.lo/', 'https://typingbara.vercel.app/', 'https://dev-typingbara.vercel.app/'],
+    'allowed_origins' => ['http://localhost:3000', 'https://typingbara.vercel.app', 'https://dev-typingbara.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
