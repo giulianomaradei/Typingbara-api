@@ -15,9 +15,11 @@ class AppServiceProvider extends ServiceProvider
     {
         /*** Repositories injection */
         $this->app->bind('App\Repositories\User\Interfaces\UserInterface', 'App\Repositories\User\UserRepository');
+        $this->app->bind('App\Repositories\Game\Interfaces\GameInterface', 'App\Repositories\Game\GameRepository');
 
         /*** Services injection */
         $this->app->bind('App\Services\User\Interfaces\UserInterface', 'App\Services\User\UserService');
+        $this->app->bind('App\Services\Game\Interfaces\GameInterface', 'App\Services\Game\GameService');
     }
 
     /**

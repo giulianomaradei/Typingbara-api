@@ -18,7 +18,7 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('/leaderboard'      , 'UserController@getLeaderboard');
 });
 
-Route::group(['middleware' => 'auth:sanctum'], function() {
+Route::group(['middleware' => 'auth:sanctum'], function() { 
 
     Route::group(['prefix' => 'user'], function() {
         Route::get('/'                 , 'UserController@getUser');
@@ -33,4 +33,8 @@ Route::group(['prefix' => 'auth'], function() {
     Route::post('/register', 'AuthController@register');
 });
 
+Route::group(['prefix' => 'game'], function() {
+    Route::post('/', 'GameController@create');
+    Route::post('/connect/{id}', 'GameController@connectGame');
+});
 

@@ -56,7 +56,6 @@ class UserService extends BaseService implements UserInterface
 
     public function addTestResult( $id, Request $request )
     {
-        dd(openssl_decrypt($request->data, 'aes-256-ecb', ENV('ENCRYPTION_KEY')));
         $data = $request->validate(TypingTestResult::$rules);
         return $this->userRepository->addTestResult( $id, $data );
     }
