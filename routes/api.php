@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['prefix' => 'user'], function() {
-    Route::get('/leaderboard'      , 'UserController@getLeaderboard');
+    Route::get('/leaderboard'     , 'UserController@getLeaderboard');
 });
 
 Route::group(['middleware' => 'auth:sanctum'], function() { 
@@ -29,12 +29,13 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 });
 
 Route::group(['prefix' => 'auth'], function() {
-    Route::post('/login', 'AuthController@login');
+    Route::post('/login'   , 'AuthController@login');
     Route::post('/register', 'AuthController@register');
 });
 
 Route::group(['prefix' => 'game'], function() {
-    Route::post('/', 'GameController@create');
-    Route::post('/connect/{id}', 'GameController@connectGame');
+    Route::post('/'                 , 'GameController@create');
+    Route::get('/{id}'              , 'GameController@getById');
+    Route::post('/connect/{id}'     , 'GameController@connectGame');
 });
 

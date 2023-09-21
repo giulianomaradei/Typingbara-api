@@ -17,7 +17,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('match', function ($user, $dados) {
+Broadcast::channel('match.{gameId}', function ($user, $dados) {
     // Lógica para lidar com os dados recebidos do cliente
     return true;
 });

@@ -17,4 +17,7 @@ class GameController extends Controller
         return $repo->parseResult($user->connectGame($id, $request));
     }
 
+    public function getById($id, GameRepository $repo, GameService $user){
+        return $repo->parseResult($user->getById($id));
+    }
 }

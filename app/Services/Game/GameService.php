@@ -24,12 +24,17 @@ class GameService extends BaseService implements GameInterface
 
     public function create(Request $request)
     {
-        return $this->gameRepository->create($request->player);
+        return $this->gameRepository->create();
     }
 
     public function connectGame($id, Request $request)
     {
         return $this->gameRepository->connectGame($id, $request->player);
+    }
+
+    public function getById($id)
+    {
+        return $this->gameRepository->getById($id);
     }
 
 }
