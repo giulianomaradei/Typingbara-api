@@ -36,10 +36,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(TypingTestResult::class, 'user_id', 'id');
     }
-
-    public function game()
-    {
-        return $this->morphMany(Game::class, 'gameable');
-    }
 }
 
