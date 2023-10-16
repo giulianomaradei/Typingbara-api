@@ -13,11 +13,8 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+Broadcast::channel('game.{gameId}', function ($user, $gameId) {
+    return $user;
 });
 
-Broadcast::channel('match.{gameId}', function ($user, $dados) {
-    // Lógica para lidar com os dados recebidos do cliente
-    return true;
-});
+

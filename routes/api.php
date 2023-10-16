@@ -33,9 +33,4 @@ Route::group(['prefix' => 'auth'], function() {
     Route::post('/register', 'AuthController@register');
 });
 
-Route::group(['prefix' => 'game'], function() {
-    Route::post('/'                 , 'GameController@create');
-    Route::get('/{id}'              , 'GameController@getById');
-    Route::post('/connect/{id}'     , 'GameController@connectGame');
-});
 
