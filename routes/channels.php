@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Broadcast;
 */
 
 Broadcast::channel('game.{gameId}', function ($user, $gameId) {
-    return array('name' => $user->name);
+    return ['id' => $user->id, 'name' => $user->name];
 });
 
 
